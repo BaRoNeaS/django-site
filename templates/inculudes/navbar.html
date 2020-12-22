@@ -1,0 +1,76 @@
+<nav class=" navbar navbar-expand-lg navbar-light  fixed-top " id="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/">E-ticaret</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">AnaSayfa <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tlp-formsc">İletişim</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser  %}
+                                <li class="nav-item"><a class="btn btn-danger rounded ml-1" href="/admin">Admin Panel</a></li>
+                            {% else %}
+                            {% endif %}
+                            <li class="nav-item"><a class="btn btn-info rounded ml-1" href="/articles/dashboard/">Dashboard</a></li>
+                            <li class="nav-item"><a class="btn btn-info rounded ml-1" href="/user/logout/">Çıkış Yap</a></li>
+                            
+                        {% else %}
+                            <li class="nav-item"><a class="btn btn-info rounded ml-1" href="/user/register/">Kayıt Ol</a></li>
+                            <li class="nav-item"><a class="btn btn-info rounded ml-1" href="/user/login/">Üye Girişi</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+<!--<header>
+        <nav class=" navbar navbar-expand-lg navbar-light  fixed-top " id="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">E-ticaret</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">AnaSayfa <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#hkmzsc">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#ozklsc">Özellikler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#ucrtsc">Fiyatlandırma</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#tlp-formsc">İletişim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#tlp-formsc">Blog</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-info rounded" href="/#dwldsc">Demo Sürümü</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+-->

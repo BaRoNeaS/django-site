@@ -1,0 +1,55 @@
+{% extends "leyaut.html" %}
+{% block body %}
+{% include "inculudes/navbar.html" %}
+<div class="container">
+<div class="card text-left">
+  <div class="card-header text-center">
+    BY {{article.author}} 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{article.title}}</h5>
+    <p class="card-text">{{article.content|safe}}</p>
+  </div>
+  <div class="card-footer text-muted text-center">
+    {{article.created_date}}
+  </div>
+</div>
+<br>
+<h5>Yorumlar</h5>
+{% if comments %}
+
+{% for comment in comments %}
+<div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">{{comment.comment_author}}</h5>
+            {{comment.comment_content}}
+            <br>
+            <small style="color:grey;">{{comment.comment_date}}</small>
+          </div>
+        </div>
+{% endfor %}
+{% else %}
+<div class="alert alert-danger">Henüz Yorum Yapılmamış</div>
+{% endif %}
+
+        <div class="card my-4">
+          <h5 class="card-header">Yorum Ekle</h5>
+          <div class="card-body">
+          
+            <form method="post" action="{% url 'article:comment' article.id %}">
+            {% csrf_token %}
+              <div class="form-group">
+              <label for="exampleFormControlInput1">İsminiz</label>
+               <input name = "comment_author" class="form-control"  placeholder="isminiz">
+              </div>
+              <div class="form-group">
+              <label for="exampleFormControlInput1">İçerik</label>
+                <textarea name = "comment_content" class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-danger">Ekle</button>
+            </form>
+          </div>
+        </div>
+</div>
+{% endblock body %}
